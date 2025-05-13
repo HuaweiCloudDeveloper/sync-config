@@ -22,8 +22,8 @@ jobs:
         dst_key: ${{ secrets.GITEE_SYNC_PRIVATE_KEY }}
         dst_token:  ${{ secrets.GITEE_SYNC_TOKEN }}
         account_type: org
-        # black_list: 'repo_name,repo_name2'
-        static_list: testcontainers-doc
+        black_list: 'testcontainers-doc'
+        static_list: 'testcontainers-doc,redash-image'
         clone_style: ssh
         force_update: true
         debug: true
