@@ -22,8 +22,7 @@ jobs:
         dst_key: ${{ secrets.GITEE_SYNC_PRIVATE_KEY }}
         dst_token:  ${{ secrets.GITEE_SYNC_TOKEN }}
         account_type: org
-        black_list: 'testcontainers-doc'
-        static_list: 'testcontainers-doc,redash-image'
+        black_list: 'memcached-image,huaweicloud-encryption-sdk-java,huaweicloud-app-orchestration-hcl,huaweicloud-solution-building-high-availability-aigc-applications-with-stable-diffusion,huaweicloud-solution-adding-backend-instances-to-an-elb-across-vpcs,huaweicloud-solution-accessing-obs-through-nginx,HuaweiCloudToolkit,HuaweiCloud-Harbor-obs,huaweicloud-secretsmanager-jdbc-sdk-java,huaweicloud-solution-serverless-video-transcoding,huaweicloud-solution-scheduled-power-on-and-power-off-solution,huaweicloud-solution-application-containerization-to-the-cloud,huaweicloud-solution-global-data-transfer-acceleration,huaweicloud-solution-deploy-a-source-code-build-system-based-on-jenkins,huaweicloud-solution-website-om-based-on-log-tank-service,huaweicloud-solution-serverless-real-time-log-analysis,huaweicloud-solution-security-harden-for-ssh-login-to-linux-ecs,huaweicloud-solution-oracle-rac-in-cloud,huaweicloud-solution-cloud-backup,huaweicloud-solution-cdn-download-acceleration,huaweicloud-solution-E-commerce-shop-based-magento,huaweicloud-solution-build-a-highly-available-RabbitMQ-cluster,huaweicloud-solution-build-a-WAF-based-on-modsecurity,Rewarding-Cloud-Native-Projects,huaweicloud-solution-search-acceleration-based-CSS,huaweicloud-solution-deploy-a-highly-available-mongodB,huaweicloud-solution-deploy-a-highly-available-MHA-MySQL-cluster,huaweicloud-solution-rapid-deployment-of-sap-s4hana-cloud-environment,huaweicloud-solution-rapid-deployment-of-sap-b1-cloud-environment,huaweicloud-OBS-code-samples-go,huaweicloud-OBS-code-samples-python,huaweicloud-OBS-code-samples-java,huaweicloud-regionless-dataset'
         clone_style: ssh
         force_update: true
         debug: true
