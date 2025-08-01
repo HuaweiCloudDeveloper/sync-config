@@ -1,11 +1,11 @@
-# Enable job 2025-05-12
-name: HuaweiCloudDeveloper github repos mirror periodic job
+name: Mirror github/HuaweiCloudDeveloper to gitee/HuaweiCloudDeveloper
 
-on:
-  workflow_dispatch:
-  schedule:
-    # Runs at 01:00 UTC (9:00 AM Beijing) every day
-    - cron:  '0 1 * * *'
+# disable sysn code from github to gitee
+#on:
+#  workflow_dispatch:
+#  schedule:
+#    # Runs at 01:00 UTC (9:00 AM Beijing) every day
+#    - cron:  '0 1 * * *'
 
 jobs:
   build:
