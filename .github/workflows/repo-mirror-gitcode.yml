@@ -1,4 +1,5 @@
-name: sync-org-repo
+name: Mirror github/HuaweiCloudDeveloper to gitcode/HuaweiCloudDeveloper
+
 on:
   schedule:
     - cron: '0 0 * * *'  # 每天执行一次
@@ -37,6 +38,7 @@ jobs:
           GITHUB_USERNAME: HuaweiCloudDeveloper
           GITCODE_USERNAME: HuaweiCloudDeveloper
           BLACK_LIST: 'gaussdb-examples,huaweicloud-encryption-sdk-java,huaweicloud-solution-build-a-WAF-based-on-modsecurity,huaweicloud-app-orchestration-hcl,huaweicloud-regionless-dataset,huaweicloud-solution-building-high-availability-aigc-applications-with-stable-diffusion,huaweicloud-solution-accessing-obs-through-nginx,HuaweiCloudToolkit,HuaweiCloud-Airflow-provider,HuaweiCloud-Harbor-obs,huaweicloud-secretsmanager-jdbc-sdk-java,huaweicloud-solution-adding-backend-instances-to-an-elb-across-vpcs,huaweicloud-solution-E-commerce-shop-based-magento,huaweicloud-solution-deploy-a-highly-available-mongodB,huaweicloud-solution-deploy-a-highly-available-MHA-MySQL-cluster,huaweicloud-solution-build-a-highly-available-RabbitMQ-cluster,huaweicloud-solution-rapid-deployment-of-sap-b1-cloud-environment,huaweicloud-solution-serverless-video-transcoding,huaweicloud-solution-rapid-deployment-of-sap-s4hana-cloud-environment,huaweicloud-solution-scheduled-power-on-and-power-off-solution,huaweicloud-solution-website-om-based-on-log-tank-service,huaweicloud-solution-serverless-real-time-log-analysis,huaweicloud-solution-security-harden-for-ssh-login-to-linux-ecs,huaweicloud-solution-application-containerization-to-the-cloud,huaweicloud-solution-search-acceleration-based-CSS,huaweicloud-solution-oracle-rac-in-cloud,huaweicloud-solution-global-data-transfer-acceleration,huaweicloud-solution-cloud-backup,huaweicloud-solution-cdn-download-acceleration,huaweicloud-solution-deploy-a-source-code-build-system-based-on-jenkins'
+          WHITE_LIST: 'gaussdb-drivers,gaussdb-ecosystem,gaussdb-r2dbc,gaussdb-r2dbc-examples,gaussdb-python,gaussdb-python-async,gaussdb-dotnet,gaussdb-node,gaussdb-go,gaussdb-hibernate-orm,gaussdb-quartz,gaussdb-spring-data-relational,gaussdb-rust,gaussdb-flink-connector-jdbc'
         run: |
           python3 << 'EOF'
           import os
@@ -134,6 +136,7 @@ jobs:
           repos = get_all_github_repos()
           print(f"Total repositories to process: {len(repos)}")
           black_list = str2list(os.environ["BLACK_LIST"])
+          white_list = str2list(os.environ["WHITE_LIST"])
           # 处理每个仓库
           success_count = 0
           fail_count = 0
@@ -144,6 +147,12 @@ jobs:
               repo_url = repo['ssh_url']
               print(f"\n[{i}/{len(repos)}] Processing repository: {repo_name}")
 
+              # 匹配white_list
+              if repo_name not in white_list:
+                  print(f"Skipping mirror repository: {repo_name}")
+                  skip_count += 1
+                  continue
+                  
               # 跳过black_list
               if repo_name in black_list:
                   print(f"Skipping mirror repository: {repo_name}")
